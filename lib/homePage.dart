@@ -6,7 +6,7 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
-  int num1 = 0, num2 = 0;
+  var num1 = 0, num2 = 0;
   var sum=0;
 
   final TextEditingController Tnum1=TextEditingController();
