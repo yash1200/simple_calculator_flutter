@@ -7,7 +7,7 @@ class homePage extends StatefulWidget {
 
 class _homePageState extends State<homePage> {
   int num1 = 0, num2 = 0;
-  double sum=0;
+  var sum=0;
 
   final TextEditingController Tnum1=TextEditingController();
   final TextEditingController Tnum2=TextEditingController();
@@ -119,7 +119,7 @@ class _homePageState extends State<homePage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Colors.red,
-                onPressed: () {},
+                onPressed: clear,
               ),
             )
           ],
@@ -132,29 +132,33 @@ class _homePageState extends State<homePage> {
     setState(() {
       num1=int.parse(Tnum1.text);
       num2=int.parse(Tnum2.text);
-      sum=(num1+num2).toDouble();
+      sum=(num1+num2);
     });
   }
   void doSub(){
     setState(() {
       num1=int.parse(Tnum1.text);
       num2=int.parse(Tnum2.text);
-      sum=(num1-num2).toDouble();
+      sum=(num1-num2);
     });
   }
   void doMul(){
     setState(() {
       num1=int.parse(Tnum1.text);
       num2=int.parse(Tnum2.text);
-      sum=(num1*num2).toDouble();
+      sum=(num1*num2);
     });
   }
   void doDiv(){
     setState(() {
       num1=int.parse(Tnum1.text);
       num2=int.parse(Tnum2.text);
-      sum=num1.toDouble()/num2.toDouble();
+      sum=num1~/num2;
     });
+  }
+  void clear(){
+    Tnum1.text='';
+    Tnum2.text='';
   }
 
 }
