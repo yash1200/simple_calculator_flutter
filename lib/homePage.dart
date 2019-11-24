@@ -6,17 +6,26 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
-  var num1 = 0, num2 = 0;
-  var sum = 0;
+  var num1, num2;
+  var sum;
 
   final TextEditingController Tnum1 = TextEditingController();
   final TextEditingController Tnum2 = TextEditingController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    num1=0;
+    sum=0;
+    num2=0;
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Calculator"),
+        elevation: 0,
       ),
       body: Center(
         child: Column(
@@ -27,7 +36,7 @@ class _homePageState extends State<homePage> {
               child: Container(
                   child: Text(
                 "Output: $sum",
-                style: TextStyle(fontSize: 30, color: Colors.red),
+                style: TextStyle(fontSize: 30, color: Colors.blueAccent),
               )),
             ),
             Padding(
@@ -35,9 +44,11 @@ class _homePageState extends State<homePage> {
               child: TextField(
                 controller: Tnum1,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    labelText: 'Number 1'),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  labelText: 'Number 1',
+                ),
                 keyboardType: TextInputType.number,
               ),
             ),
@@ -46,9 +57,11 @@ class _homePageState extends State<homePage> {
               child: TextField(
                 controller: Tnum2,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    labelText: 'Number 2'),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  labelText: 'Number 2',
+                ),
                 keyboardType: TextInputType.number,
               ),
             ),
@@ -65,7 +78,7 @@ class _homePageState extends State<homePage> {
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: doAdd,
-                        color: Colors.red,
+                        color: Colors.blueAccent,
                       ),
                     ),
                   ),
@@ -78,7 +91,7 @@ class _homePageState extends State<homePage> {
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: doSub,
-                        color: Colors.red,
+                        color: Colors.blueAccent,
                       ),
                     ),
                   ),
@@ -91,7 +104,7 @@ class _homePageState extends State<homePage> {
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: doMul,
-                        color: Colors.red,
+                        color: Colors.blueAccent,
                       ),
                     ),
                   ),
@@ -104,7 +117,7 @@ class _homePageState extends State<homePage> {
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: doDiv,
-                        color: Colors.red,
+                        color: Colors.blueAccent,
                       ),
                     ),
                   ),
@@ -113,12 +126,12 @@ class _homePageState extends State<homePage> {
             ),
             Container(
               width: 100,
-              child: RaisedButton(
+              child: FlatButton(
                 child: Text(
                   'Clear',
                   style: TextStyle(color: Colors.white),
                 ),
-                color: Colors.red,
+                color: Colors.blueAccent,
                 onPressed: clear,
               ),
             )
@@ -154,14 +167,17 @@ class _homePageState extends State<homePage> {
 
   void doDiv() {
     setState(() {
-      num1 = int.parse(Tnum1.text);
-      num2 = int.parse(Tnum2.text);
-      sum = num1 ~/ num2;
+      num1 = double.parse(Tnum1.text);
+      num2 = double.parse(Tnum2.text);
+      sum = (num1 / num2);
     });
   }
 
   void clear() {
     Tnum1.text = '';
     Tnum2.text = '';
+    setState(() {
+      sum = 0;
+    });
   }
 }

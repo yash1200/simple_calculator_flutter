@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Calculator App',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primaryColor: Colors.blueAccent,
       ),
       home: homePage(),
     );
